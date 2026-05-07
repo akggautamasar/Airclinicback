@@ -16,7 +16,10 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(express.json());
 
-// ── Routes ──────────────────────────────────
+// ── Public Routes (no auth needed) ──────────
+app.use('/public', require('./routes/public'));
+
+// ── Protected Routes ────────────────────────
 app.use('/api/doctor',       require('./routes/doctor'));
 app.use('/api/patients',     require('./routes/patients'));
 app.use('/api/appointments', require('./routes/appointments'));
